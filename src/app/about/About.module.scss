@@ -1,0 +1,171 @@
+.wrapper {
+    background-color: #fff;
+}
+
+.heading {
+    width: 100vw;
+    height: 60vh;
+    position: relative;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.5;
+}
+
+.heading_info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    z-index: 4;
+}
+
+.heading_title {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+}
+
+.about {
+    font-size: 3.2rem;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 2px;
+}
+
+.services {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+
+    .overlay {
+        opacity: 20;
+    }
+}
+
+.message {
+    font-size: 1.3rem;
+    color: #f1f1f1;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.services_list {
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.services_item {
+    padding: 10px 20px;
+    border-right: 1px solid #eee;
+
+    &:last-child {
+        border-color: transparent;
+    }
+}
+
+.item_icon {
+    font-size: 6rem;
+    color: var(--primary-color);
+}
+
+.item_title {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 2px;
+
+
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.item_description {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    color: #c9c9c9;
+    line-height: 1.5;
+    letter-spacing: 1;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 10px;
+    background-color: #f8f8f8;
+
+    .about {
+        color: #111;
+    }
+
+    .message {
+        color: #6d6d6d;
+        max-width: 600px;
+    }
+}
+
+.icon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    position: relative;
+    margin: 50px 0 20px 0;
+}
+
+.icon_img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: #fff;
+}
+
+// Responsive
+
+// On Mobile Tablet
+@media (max-width: 1023px) {
+    .heading {
+        height: 40vh;
+    }
+}
+
+// On Mobile
+@media (max-width: 739px) {
+
+    .services {
+        height: 150vh;
+    }
+
+    .heading_title {
+        font-size: 1.4rem;
+    }
+
+    .about {
+        font-size: 2rem;
+    }
+}
