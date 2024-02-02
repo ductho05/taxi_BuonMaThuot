@@ -2,10 +2,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import classNames from 'classnames/bind'
 import styles from './page.module.scss'
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import MyLocationOutlinedIcon from '@mui/icons-material/MyLocationOutlined';
 import MapboxGeocoding from '@mapbox/mapbox-sdk/services/geocoding'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
