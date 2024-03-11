@@ -37,7 +37,7 @@ const Contact = () => {
                             <WifiCalling3OutlinedIcon className={cx('icon_img')} />
                         </div>
                         <p className={cx('contact_title')}>Điện thoại</p>
-                        <p className={cx('contact_content')}>0877404581</p>
+                        <p className={cx('contact_content')}>0566814814</p>
                     </li>
 
                     <li className={cx('contact_item')}>
