@@ -9,7 +9,7 @@ const cx = classNames.bind(styles)
 const CallButton = () => {
   return (
     <div className={cx('wrapper')}>
-      <Link href='tel:0939492779'>
+      <Link href='tel:0566814814'>
         <PermPhoneMsgIcon className={cx('icon')} />
       </Link>
     </div>

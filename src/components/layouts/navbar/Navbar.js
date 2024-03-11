@@ -61,9 +61,9 @@ const Navbar = () => {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('heading')}>
-                <Link href='tel:0939492779' className={cx('phone')}>
+                <Link href='tel:0566814814' className={cx('phone')}>
                     <LocalPhoneIcon className={cx('phone_icon')} />
-                    0939492779
+                    0566814814
                 </Link>
             </div>
             <div ref={header} className={isSticky ? cx('bottom', 'sticky') : cx('bottom')}>
