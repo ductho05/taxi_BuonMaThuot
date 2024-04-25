@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="favicon.ico" />
         <meta name="google-site-verification" content="oyZKGfWq3_JK_esth-rDJyV4eqOBnm7W1BMVLGhYTXw" />
-        {/* Start of AutoAds Tracking Code */}
-        <script id='autoAdsMaxLead-widget-script' src='https://cdn.autoads.asia/scripts/autoads-maxlead-widget.js?business_id=E556BC2F4E0D43C3A470396842702899' type='text/javascript' charset='UTF-8' async></script>
-        {/* End of AutoAds Tracking Code */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16518729039">
+        </script>
+        <script src='./google.js'></script>
       </head>
       <body className={inter.className}>
         <Navbar />
