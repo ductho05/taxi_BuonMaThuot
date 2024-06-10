@@ -277,7 +277,7 @@ export default function Home() {
                             </div>
                         </div> */}
 
-                        <Link href='tel:0939492779' className={cx('btn_order')}>
+                        <Link href='tel:0566814814' className={cx('btn_order')}>
                             Gọi ngay cho chúng tôi!
                         </Link>
                     </div>
