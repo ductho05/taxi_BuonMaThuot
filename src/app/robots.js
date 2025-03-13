@@ -5,6 +5,6 @@ export default function robots() {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://taxi-buon-ma-thuot.io.vn/sitemap.xml',
+        sitemap: 'https://taxibuonmathuot.vn/sitemap.xml',
     }
 }
