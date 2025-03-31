@@ -1,9 +1,9 @@
-'use client'
-import React, { useEffect, useState, useRef } from 'react'
-import classNames from 'classnames/bind'
-import styles from './page.module.scss'
-import MapboxGeocoding from '@mapbox/mapbox-sdk/services/geocoding'
-import { AnimationOnScroll } from 'react-animation-on-scroll'
+'use client';
+import React, { useEffect, useState, useRef } from 'react';
+import classNames from 'classnames/bind';
+import styles from './page.module.scss';
+import MapboxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import DoNotDisturbOnTotalSilenceOutlinedIcon from '@mui/icons-material/DoNotDisturbOnTotalSilenceOutlined';
@@ -15,62 +15,62 @@ const slides = [
         id: 0,
         url: 'https://images.pexels.com/photos/3760814/pexels-photo-3760814.jpeg',
         text: 'Tận hưởng chuyến đi thoải mái',
-        title: 'Đặt taxi online'
+        title: 'Đặt taxi online',
     },
     {
         id: 1,
         url: 'https://images.pexels.com/photos/5225461/pexels-photo-5225461.jpeg',
         text: 'Bạn sẽ có chuyến đi an toàn',
-        title: 'Dịch vụ taxi tốt nhất'
+        title: 'Dịch vụ taxi tốt nhất',
     },
     {
         id: 2,
         url: 'https://images.pexels.com/photos/6008633/pexels-photo-6008633.jpeg',
         text: 'Nhanh chóng, tiện lợi, an toàn',
-        title: 'Tìm taxi của bạn'
-    }
-]
+        title: 'Tìm taxi của bạn',
+    },
+];
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 export default function Home() {
+    const [slide, setSlide] = useState(slides[0]);
+    const [startLocation, setStartLocation] = useState('');
+    const [endLocation, setEndLocation] = useState('');
+    const [dateTimeStart, setDateTimeStart] = useState('Chọn ngày giờ');
+    const [phone, setPhone] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [suggestionsEnd, setSuggestionsEnd] = useState([]);
+    const [error, setError] = useState(false);
+    const dateTime = useRef();
+    const timeouts = useRef(null);
 
-    const [slide, setSlide] = useState(slides[0])
-    const [startLocation, setStartLocation] = useState('')
-    const [endLocation, setEndLocation] = useState('')
-    const [dateTimeStart, setDateTimeStart] = useState('Chọn ngày giờ')
-    const [phone, setPhone] = useState('')
-    const [suggestions, setSuggestions] = useState([])
-    const [suggestionsEnd, setSuggestionsEnd] = useState([])
-    const [error, setError] = useState(false)
-    const dateTime = useRef()
-    const timeouts = useRef(null)
-
-    const geocodingClient = MapboxGeocoding({ accessToken: 'pk.eyJ1IjoiZHVjdGhvMjMwNSIsImEiOiJjbGxqYjQwbnoxMW1oM2RyNnExcDVhYWt1In0.c6rvxjhaoHST20hqxxjpkQ' });
+    const geocodingClient = MapboxGeocoding({
+        accessToken: 'pk.eyJ1IjoiZHVjdGhvMjMwNSIsImEiOiJjbGxqYjQwbnoxMW1oM2RyNnExcDVhYWt1In0.c6rvxjhaoHST20hqxxjpkQ',
+    });
 
     const resetTimeout = () => {
         if (timeouts.current) {
             clearTimeout(timeouts.current);
         }
-    }
+    };
 
     useEffect(() => {
-        resetTimeout()
+        resetTimeout();
         timeouts.current = setTimeout(() => {
-            setSlide(prev => {
-                return prev.id >= slides.length - 1 ? slides[0] : slides[prev.id + 1]
-            })
-        }, 18000)
+            setSlide((prev) => {
+                return prev.id >= slides.length - 1 ? slides[0] : slides[prev.id + 1];
+            });
+        }, 18000);
 
         return () => {
-            resetTimeout()
-        }
-
-    }, [slide])
+            resetTimeout();
+        };
+    }, [slide]);
 
     const handleClickSlide = (id) => {
-        setSlide(slides[id])
-    }
+        setSlide(slides[id]);
+    };
 
     // const handleShowDateTime = () => {
     //     dateTime.current.showPicker()
@@ -131,30 +131,30 @@ export default function Home() {
 
     useEffect(() => {
         if (startLocation != '' && endLocation != '' && dateTimeStart != 'Chọn ngày giờ' && phone != '') {
-            setError(true)
+            setError(true);
         } else {
-            setError(false)
+            setError(false);
         }
-    }, [startLocation, endLocation, dateTimeStart, phone])
+    }, [startLocation, endLocation, dateTimeStart, phone]);
 
     return (
         <AnimationOnScroll animateIn="animate__shakeY" animateOut="animate__bounceOutRight">
             <div className={cx('wrapper')}>
                 <div className={cx('slides')}>
                     <div className={cx('caption')}>
-                        <p className={cx('text')}>
-                            {slide.text}
-                        </p>
+                        <p className={cx('text')}>{slide.text}</p>
                         <p className={cx('title')}>{slide.title}</p>
                     </div>
                     <img src={slide.url} alt={`Slide ${slide.id}`} />
-                    <div className={cx('overlay')} ></div>
+                    <div className={cx('overlay')}></div>
                     <ul className={cx('dots')}>
-                        {
-                            slides.map(item => (
-                                <li onClick={() => handleClickSlide(item.id)} key={item.id} className={slide.id == item.id ? cx('dot', 'active') : cx('dot')}></li>
-                            ))
-                        }
+                        {slides.map((item) => (
+                            <li
+                                onClick={() => handleClickSlide(item.id)}
+                                key={item.id}
+                                className={slide.id == item.id ? cx('dot', 'active') : cx('dot')}
+                            ></li>
+                        ))}
                     </ul>
                     <div className={cx('order', 'hide_on_mobile_tablet')}>
                         {/* <div className={cx('inputs')}>
@@ -213,7 +213,7 @@ export default function Home() {
                                 <input value={phone} onChange={(e) => handleChangePhone(e)} type="text" className={cx('input')} placeholder="Số điện thoại" />
                             </div>
                         </div> */}
-                        <Link href='tel:0566814814' className={cx('btn_order')}>
+                        <Link href="tel:0566814814" className={cx('btn_order')}>
                             Gọi ngay cho chúng tôi!
                         </Link>
                     </div>
@@ -277,7 +277,7 @@ export default function Home() {
                             </div>
                         </div> */}
 
-                        <Link href='tel:0566814814' className={cx('btn_order')}>
+                        <Link href="tel:0566814814" className={cx('btn_order')}>
                             Gọi ngay cho chúng tôi!
                         </Link>
                     </div>
@@ -293,7 +293,9 @@ export default function Home() {
                                 </div>
                                 <div className={cx('feature_content')}>
                                     <p className={cx('feature_title')}>Giá xe cố định</p>
-                                    <p className={cx('feature_description')}>Giá vé cố định được đặt trong mỗi đồng hồ tính tiền là biểu giá chính.</p>
+                                    <p className={cx('feature_description')}>
+                                        Giá vé cố định được đặt trong mỗi đồng hồ tính tiền là biểu giá chính.
+                                    </p>
                                 </div>
                             </div>
 
@@ -303,12 +305,14 @@ export default function Home() {
                                 </div>
                                 <div className={cx('feature_content')}>
                                     <p className={cx('feature_title')}>Không phí phát sinh</p>
-                                    <p className={cx('feature_description')}>Chúng tôi bảo đảm không phát sinh thêm bất kì chi phí nào</p>
+                                    <p className={cx('feature_description')}>
+                                        Chúng tôi bảo đảm không phát sinh thêm bất kì chi phí nào
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div className={cx('background_car')}>
-                            <img src='./car.jpg' alt='car' />
+                            <img src="./car.jpg" alt="car" />
                         </div>
 
                         <div className={cx('right')}>
@@ -318,7 +322,9 @@ export default function Home() {
                                 </div>
                                 <div className={cx('feature_content')}>
                                     <p className={cx('feature_title')}>100% hài lòng</p>
-                                    <p className={cx('feature_description')}>Chúng tôi được rất nhiều khách hàng đánh giá cao.</p>
+                                    <p className={cx('feature_description')}>
+                                        Chúng tôi được rất nhiều khách hàng đánh giá cao.
+                                    </p>
                                 </div>
                             </div>
 
@@ -328,7 +334,9 @@ export default function Home() {
                                 </div>
                                 <div className={cx('feature_content')}>
                                     <p className={cx('feature_title')}>Tuyến trong và ngoài tỉnh</p>
-                                    <p className={cx('feature_description')}>Ứng dụng của chúng tôi rất rễ để đặt một chiếc Taxi</p>
+                                    <p className={cx('feature_description')}>
+                                        Ứng dụng của chúng tôi rất rễ để đặt một chiếc Taxi
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -336,5 +344,5 @@ export default function Home() {
                 </div>
             </div>
         </AnimationOnScroll>
-    )
+    );
 }
